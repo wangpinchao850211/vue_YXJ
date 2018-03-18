@@ -5,8 +5,11 @@ import App from './App'
 import router from './router'
 import 'font-awesome/css/font-awesome.min.css'
 import './assets/theme/style.css'
+import animate from 'animate.css'
 
 Vue.config.productionTip = false
+
+Vue.use(animate)
 
 /* eslint-disable no-new */
 new Vue({
