@@ -48,12 +48,12 @@ export default {
   min-height: calc(100vh - 40px);
   border: 20px solid  rgb(186, 194, 187);
   background-color: rgb(82, 84, 83);
-  /* position: fixed;
+  position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   right : 0;
-  bottom : 0; */
+  bottom : 0;
 }
  /* 滑入的动画 */
 .slide-enter-active, .slide-leave-active{

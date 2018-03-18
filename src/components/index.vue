@@ -18,7 +18,7 @@
           <router-link tag="div" to="/project">
             <h1>Project</h1>
           </router-link>
-          <router-link tag="div" to="/about" @click="about">
+          <router-link tag="div" to="/about">
             <h1>About</h1>
           </router-link>
           <router-link tag="div" to="/history">

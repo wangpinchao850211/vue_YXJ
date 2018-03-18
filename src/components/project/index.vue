@@ -4,12 +4,9 @@
     @after-enter="afterEnter"
     @leave="leave"
     @after-leave="afterLeave">
-  <div class="home">
-    aboutHome页
-  </div>
+    <div class="project">about/project--项目页</div>
   </transition>
 </template>
-
 <script>
 export default {
   methods: {
@@ -29,7 +26,7 @@ export default {
 }
 </script>
 <style scoped>
-.home{
+.project{
   width: calc(100vw - 40px);
   min-height: calc(100vh - 40px);
   border: 20px solid  rgb(186, 194, 187);
