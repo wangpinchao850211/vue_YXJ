@@ -41,10 +41,10 @@ export default {
   right : 0;
   bottom : 0;
 }
-.slide-enter-active, .slide-leave-active{
+/* .slide-enter-active, .slide-leave-active{
   transition : all 0.8s cubic-bezier(0.82,0,0.05,1)
 }
 .slide-enter, .slide-leave-to{
   transform : translate3d(100%, 0 ,0)
-}
+} */
 </style>

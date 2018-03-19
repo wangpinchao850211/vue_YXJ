@@ -9,6 +9,7 @@ import animate from 'animate.css'
 
 Vue.config.productionTip = false
 
+Vue.use(router)
 Vue.use(animate)
 
 /* eslint-disable no-new */

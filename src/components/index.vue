@@ -6,7 +6,7 @@
     @after-leave="afterLeave">
     <div class="default">
       <div class="getIcon">
-        <span class="getDefault" @click="getGo"></span>
+        <go-page class="getDefault" :page="pageContent" @goPage="pageClick"></go-page>
         <span class="navigation">Navigation ————</span>
       </div>
       <div class="navList">
@@ -35,20 +35,18 @@
 </template>
 
 <script>
+import goPage from 'base/back'
 export default {
   name: 'default',
   data () {
     return {
-      transitionName: ''
+      pageContent: 'A'
     }
   },
   methods: {
-    about () {
-      console.log('999999999')
-      this.$router.push({path: '/about'})
-    },
-    getGo () {
-      this.$router.go(-1)
+    pageClick () {
+      // 重点重点，根主页用forward方法，不能用go了，这个都给忘了！！！
+      this.$router.forward()
     },
     enter (el, done) {
       console.log(el)
@@ -63,16 +61,15 @@ export default {
       console.log('afterleave')
     }
   },
+  // 在子路由还是监控不到路由变化呢
   watch: {
     '$route' (to, from) {
       console.log(to.path)
       console.log(from)
-      if (to.path === '/') {
-        this.transitionName = 'slide-right'
-      } else {
-        this.transitionName = 'slide-left'
-      }
     }
+  },
+  components: {
+    goPage
   }
 }
 </script>
@@ -99,13 +96,10 @@ export default {
   position: relative;
 }
 .getDefault{
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
   background-color: rgb(255,255,255);
-  position: fixed;
-  left: 40px;
-  top: 40px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 }
 .default .getIcon .navigation{
   position: absolute;
