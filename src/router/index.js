@@ -17,19 +17,21 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      component: load('about'),
-      children: [
-        {
-          path: '/home',
-          name: 'home',
-          component: load('home')
-        }
-      ]
+      component: load('about/index')
     },
     {
       path: '/home',
       name: 'home',
-      component: load('home')
+      component: load('home/index'),
+      redirect: '/home/menu',
+      // 为什么不能跳转到子路由，这是个问题！
+      children: [
+        {
+          path: '/home/menu',
+          name: 'homeMenu',
+          component: load('home/homeMenu')
+        }
+      ]
     },
     {
       path: '/project',

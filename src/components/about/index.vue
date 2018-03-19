@@ -15,13 +15,19 @@
         <div class="menuList">
           <h2>base-Module</h2>
           <div :style="note">
-            <p>大家好home-about</p>
+            <p @click="goHomeList">
+              <span v-if="aboumenulist.homeList.length>0" v-for="(item, index) in aboumenulist.homeList" :key="index">{{item}}</span>
+              ......
+            </p>
           </div>
         </div>
         <div class="menuList">
           <h2>frame-Module</h2>
           <div :style="note_tow">
-            <p>大家好home-about</p>
+            <p @click="goProjectList">
+              <span v-if="aboumenulist.projectList.length>0" v-for="(item, index) in aboumenulist.projectList" :key="index">{{item}}</span>
+              ......
+            </p>
           </div>
         </div>
       </div>
@@ -30,9 +36,11 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations, mapActions} from 'vuex'
 import goPage from 'base/back'
 import bgUrl from 'static/horse.jpg'
 import bgUrl2 from 'static/landscape.jpg'
+
 export default {
   data () {
     return {
@@ -46,8 +54,18 @@ export default {
         backgroundImage: `url("${bgUrl2}")`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: '100% 100%'
-      }
+      },
+      homeContent: [],
+      projectContent: []
     }
+  },
+  computed: {
+    ...mapGetters([
+      'aboumenulist'
+    ])
+  },
+  created () {
+    this.getMenuList()
   },
   methods: {
     enter (el, done) {
@@ -64,7 +82,18 @@ export default {
     },
     pageClick () {
       this.$router.go(-1)
-    }
+    },
+    goHomeList () {
+      this.$router.push('/home/menu')
+    },
+    goProjectList () {
+      this.$router.push('/home')
+    },
+    ...mapMutations({
+    }),
+    ...mapActions({
+      getMenuList: 'getMenuList'
+    })
   },
   watch: {
     '$route' (to, from) {
@@ -131,11 +160,21 @@ export default {
   height: 100%;
   cursor: pointer;
   opacity: 0;
+  padding: 10px;
 }
 .menuList div:hover > p{
   background-color: rgba(0, 0, 0, 0.7);
   opacity: 1;
   transition: all .4s
+}
+.menuList div p span{
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding: 5px;
+  border: 1px solid yellow;
+  border-radius: 5px;
+  margin: 5px;
 }
 .menuList h2{
   width: 160px;
