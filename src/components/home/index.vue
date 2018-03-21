@@ -5,7 +5,7 @@
     @leave="leave"
     @after-leave="afterLeave">
   <div class="home">
-    <home-menu :param-list="paramList"></home-menu>
+    <home-menu :menu-type="menuType"></home-menu>
   </div>
   </transition>
 </template>
@@ -16,12 +16,15 @@ import HomeMenu from 'base/moduleMenu'
 export default {
   data () {
     return {
-      paramList: []
+      menuType: 0
     }
   },
+  created () {
+    // 这个位置获取到的是number类型，在传递过程后，子组件接收到的是string类型，需转换（像子组件内传入数据时，最后没有用到）
+    this.menuType = 1
+    // 向子组件传一个类型，代表需求homeMenu的菜单模块(坑：这个整体是从mounted挪上来的，在下面传，在子组件接永远都是获取不到)
+  },
   mounted () {
-    // 这个位置获取到的是number类型，在传递过程后，子组件接收到的是string类型，需转换
-    this.paramList = this.$store.getters.aboumenulist.homeList
   },
   methods: {
     enter (el, done) {

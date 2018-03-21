@@ -68,6 +68,11 @@ export default {
     // console.log(this.homeContent)
     // console.log(this.projectContent)
   },
+  mounted () {
+    this.$nextTick(() => {
+      console.log(this.homeContent)
+    })
+  },
   methods: {
     enter (el, done) {
       console.log(el)

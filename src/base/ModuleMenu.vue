@@ -1,6 +1,19 @@
 <template>
-  <div id="homeMenu">
-    <ul id="flow"></ul>
+  <div id="menu">
+    <ul id="flow">
+      <li class="theLi" v-for="(item, index) in menu" :key="index">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <line class="top" x1="0" y1="0" x2="200" y2="0" />
+          <line class="left" x1="0" y1="100%" x2="0" y2="-100%" />
+          <line class="bottom" x1="200" y1="100%" x2="0" y2="100%" />
+          <line class="right" x1="200" y1="0" x2="200" y2="100%" />
+				</svg>
+        <div class="mask">
+          <h3>{{item}}</h3>
+          <span>大家好，这是每一块的具体菜单</span>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -11,16 +24,18 @@ import {getRandomColor, getRandomNumber, getIndexByFlag} from 'utils/index'
 export default {
   data () {
     return {
-      screenWidth: document.getElementById('homeMenu').clientWidth,
+      // 在页面上写标签了，标签上使用v-for数据绑定，页面的渲染就要等待数据加载下来才会显示，所以这个位置现在是获取不到dom了，还得在方法里直接获取，方可
+      screenWidth: null,
       liSpace: 20,
       liWidth: 200,
       colHeightArr: [], // 存放每列高度的数组
-      timer: false
+      timer: false, // 防止window.resize卡的问题
+      menu: []
     }
   },
   props: {
-    paramList: {
-      type: Array,
+    menuType: {
+      type: Number,
       default: null
     }
   },
@@ -30,32 +45,37 @@ export default {
     ])
   },
   created () {
-    // 折腾我小下午啊！list没数据，一直填不上！！！
-    this.$nextTick(() => {
-      console.log(this.paramList)
-    })
+    // keng1：折腾我小下午啊！list没数据，一直填不上！！！最后还是用这种形式的获取了。坑2：父组件传过来的paramList是异步的太慢了，导致这个页面加载获取不到，并未使用paramList
+    // setTimeout(() => {
+    //   console.log(this.paramList)
+    //   this.menu = this.paramList
+    // }, 20)
+    if (this.menuType === 1) {
+      this.menu = this.$store.getters.aboumenulist.homeList
+    }
   },
   mounted () {
-    // 循环创建li
-    // dom节点用变量接收，在this.$nextTick里接收不到！！！
+    // 循环创建li（原生写法js创建）
+    // dom节点用实例变量接收，在this.$nextTick里接收不到！！！需要在方法内部直接获取
     this.$nextTick(() => {
-      const theFlow = document.getElementById('flow')
-      console.log(theFlow)
-      for (let i = 0; i < this.paramList.length; i++) {
-        let li = document.createElement('li')
+      // 在这个函数里面直接获取dom进行操作（后期代码注掉是在页面上写标签了）
+      // const theFlow = document.getElementById('flow')
+      const theLi = document.getElementsByTagName('li')
+      for (let i = 0; i < theLi.length; i++) {
+        // let li = document.createElement('li')
+        // 改成下面的，可以直接在页面上写标签的形式，只是布局方面在js里写的
         // 为每个li赋值随机的高度:
-        li.style.height = getRandomNumber(100, 300) + 'px'
-        li.style.backgroundColor = getRandomColor()
-        li.innerHTML = i + 1
-        li.style.lineHeight = li.style.height
-        theFlow.appendChild(li)
+        theLi[i].style.height = getRandomNumber(100, 300) + 'px'
+        theLi[i].style.backgroundColor = getRandomColor()
+        theLi[i].style.lineHeight = theLi[i].style.height
+        // theFlow.appendChild(li)
       }
       this.init()
       this.layout()
       const that = this
       window.onresize = () => {
         return (() => {
-          window.screenWidth = document.getElementById('homeMenu').clientWidth
+          window.screenWidth = document.getElementById('menu').clientWidth
           that.screenWidth = window.screenWidth
         })()
       }
@@ -109,7 +129,7 @@ export default {
 }
 </script>
 <style scoped>
-#homeMenu{
+#menu{
   width: 100%;
   height: 100%;
   background-color: darkcyan;

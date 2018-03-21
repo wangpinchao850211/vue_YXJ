@@ -32,9 +32,75 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
 
 #flow li{
   width: 200px;
-  font-size: 28px;
-  text-align: center;
+  /* font-size: 28px;
+  text-align: center; */
   position: absolute;
   list-style: none;
   transition: all 1s;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 4px #2c3e50;
 }
+/* 描边css动画 */
+#flow svg{ 
+  display: block; 
+  position: absolute; 
+  left: 0; top: 0;
+}
+#flow svg line {
+  stroke-width: 7;
+  stroke: #ECF0F1;
+  fill: none;
+  -webkit-transition: all .6s ease-in-out;
+  transition: all .6s ease-in-out;
+  -ms-transition: all .6s ease-in-out;
+}		
+.theLi svg line.top, .theLi svg line.bottom {
+  -ms-stroke-dasharray: 330 240;
+  stroke-dasharray: 330 240;
+}			
+.theLi svg line.left, .theLi svg line.right {
+  -ms-stroke-dasharray: 430 340;
+  stroke-dasharray: 430 340;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.mask h3{
+  float: left;
+  width: 20%;
+  /* background-color: aqua; */
+}
+.mask span{
+  float: right;
+  width: 70%;
+  /* background-color: yellow; */
+}
+.theLi:hover .mask{
+    background-color: rgba(24, 24, 24, 0.8);
+    -webkit-transition: background 0.4s 0.5s;
+	transition: background 0.4s 0.5s;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    /*-1 可以当背景 让其高斯模糊*/ 
+    /* z-index: -1; 
+    -webkit-filter: blur(1px);  
+    filter: blur(1px); */
+}
+.theLi h3,
+.theLi span {
+    -webkit-transition: color 0.4s 0.5s;
+    transition: color 0.4s 0.5s;
+}
+.theLi:hover h3,
+.theLi:hover span {
+    color: rgb(222, 222, 222);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+/*第5种*/
+.theLi:hover svg line.top{ transform: translateX(-200px);}
+.theLi:hover svg line.bottom{ transform: translateX(200px);}
+.theLi:hover svg line.left{ transform: translateY(100%);}
+.theLi:hover svg line.right{ transform: translateY(-100%);}
