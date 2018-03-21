@@ -23,15 +23,8 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: load('home/index'),
-      redirect: '/home/menu',
-      // 为什么不能跳转到子路由，这是个问题！
-      children: [
-        {
-          path: '/home/menu',
-          name: 'homeMenu',
-          component: load('home/homeMenu')
-        }
-      ]
+      // 为什么不能跳转到子路由，这是个问题！(看了几个项目，要显示children，必须还要有router-view，否则无法显示)
+      children: []
     },
     {
       path: '/project',

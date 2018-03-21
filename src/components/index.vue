@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations, mapActions} from 'vuex'
 import goPage from 'base/back'
 export default {
   name: 'default',
@@ -42,6 +43,14 @@ export default {
     return {
       pageContent: 'A'
     }
+  },
+  computed: {
+    ...mapGetters([
+      'aboumenulist'
+    ])
+  },
+  created () {
+    this.getMenuList()
   },
   methods: {
     pageClick () {
@@ -59,7 +68,12 @@ export default {
     },
     afterLeave () {
       console.log('afterleave')
-    }
+    },
+    ...mapMutations({
+    }),
+    ...mapActions({
+      getMenuList: 'getMenuList'
+    })
   },
   // 在子路由还是监控不到路由变化呢
   watch: {

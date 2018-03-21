@@ -16,7 +16,7 @@
           <h2>base-Module</h2>
           <div :style="note">
             <p @click="goHomeList">
-              <span v-if="aboumenulist.homeList.length>0" v-for="(item, index) in aboumenulist.homeList" :key="index">{{item}}</span>
+              <span v-if="homeContent.length>0" v-for="(item, index) in homeContent" :key="index">{{item}}</span>
               ......
             </p>
           </div>
@@ -25,7 +25,7 @@
           <h2>frame-Module</h2>
           <div :style="note_tow">
             <p @click="goProjectList">
-              <span v-if="aboumenulist.projectList.length>0" v-for="(item, index) in aboumenulist.projectList" :key="index">{{item}}</span>
+              <span v-if="projectContent.length>0" v-for="(item, index) in projectContent" :key="index">{{item}}</span>
               ......
             </p>
           </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations, mapActions} from 'vuex'
+// import {mapGetters, mapMutations, mapActions} from 'vuex'
 import goPage from 'base/back'
 import bgUrl from 'static/horse.jpg'
 import bgUrl2 from 'static/landscape.jpg'
@@ -60,12 +60,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'aboumenulist'
-    ])
   },
   created () {
-    this.getMenuList()
+    // 把首页请求的数据绑定到页面上
+    this.homeContent = this.$store.getters.aboumenulist.homeList
+    this.projectContent = this.$store.getters.aboumenulist.projectList
+    // console.log(this.homeContent)
+    // console.log(this.projectContent)
   },
   methods: {
     enter (el, done) {
@@ -84,16 +85,11 @@ export default {
       this.$router.go(-1)
     },
     goHomeList () {
-      this.$router.push('/home/menu')
+      this.$router.push({path: '/home'})
     },
     goProjectList () {
-      this.$router.push('/home')
-    },
-    ...mapMutations({
-    }),
-    ...mapActions({
-      getMenuList: 'getMenuList'
-    })
+      this.$router.push({path: '/project'})
+    }
   },
   watch: {
     '$route' (to, from) {
