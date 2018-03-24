@@ -47,3 +47,28 @@ export const getIndexByFlag = function (flag, array) {
   }
   return Index
 }
+// 做异步请求函数
+const actions = new WeakMap()
+export const doAction = function (func, params) {
+  if (!actions.has(func)) {
+    actions.set(func, true)
+  }
+  // 控制异步流程顺序执行，以便捕获异常和函数结束后做通用处理
+  async function f () {
+    try {
+      // await store.dispatch('StartLoading');
+      // console.log('start loading');
+      await func(params)
+      // setTimeout(() => store.dispatch('EndLoading'));
+      // console.log('end loading');
+    } catch (error) {
+      console.log('catched')
+      console.log(error)
+    }
+  }
+  if (actions.get(func)) {
+    actions.set(func, false)
+    setTimeout(() => actions.set(func, true), 1000)
+    f() // 第一次调用的地方
+  }
+}

@@ -6,5 +6,6 @@ Mock.setup({
 })
 
 Mock.mock(/\/about/, 'get', aboutAPI.aboutList)
+Mock.mock(/\/homeMenu/, 'get', aboutAPI.homeMenuList)
 
 export default Mock

@@ -16,7 +16,7 @@
           <h2>base-Module</h2>
           <div :style="note">
             <p @click="goHomeList">
-              <span v-if="homeContent.length>0" v-for="(item, index) in homeContent" :key="index">{{item}}</span>
+              <span v-if="homeContent.length>0" v-for="(item, index) in homeContent" :key="index">{{item.title}}</span>
               ......
             </p>
           </div>
@@ -126,7 +126,7 @@ export default {
   left: 0;
   right : 0;
   bottom : 0;
-  overflow: hidden;
+  overflow: auto;
 }
 .getIcon{
   width: 100px;

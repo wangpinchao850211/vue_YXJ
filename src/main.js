@@ -11,6 +11,20 @@ import animate from 'animate.css'
 
 Vue.config.productionTip = false
 
+// 自定义处理模块菜单的过滤器
+// Vue.filter('contentFilter', function (item) {
+//   if (!item) return ''
+//   const itemArr = []
+//   const ite = item.toString().split('@')
+//   for (let i = 0; i < ite.length; i++) {
+//     if (ite[i] !== '') {
+//       itemArr.push(ite[i])
+//     }
+//   }
+//   console.log(itemArr)
+//   return itemArr
+// })
+
 Vue.use(router)
 Vue.use(store)
 Vue.use(animate)
