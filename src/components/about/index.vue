@@ -25,7 +25,7 @@
           <h2>frame-Module</h2>
           <div :style="note_tow">
             <p @click="goProjectList">
-              <span v-if="projectContent.length>0" v-for="(item, index) in projectContent" :key="index">{{item}}</span>
+              <span v-if="projectContent.length>0" v-for="(item, index) in projectContent" :key="index">{{item.title}}</span>
               ......
             </p>
           </div>
@@ -37,9 +37,18 @@
 
 <script>
 // import {mapGetters, mapMutations, mapActions} from 'vuex'
+import store from 'store'
+import {doAction} from 'utils/index'
 import goPage from 'base/back'
 import bgUrl from 'static/horse.jpg'
 import bgUrl2 from 'static/landscape.jpg'
+
+async function getMenu (params) {
+  await store.dispatch('getMenuList')
+  // 在组件mounted获取数据
+  // that.homeContent = store.getters.aboumenulist.homeList
+  // that.projectContent = store.getters.aboumenulist.projectList
+}
 
 export default {
   data () {
@@ -62,16 +71,17 @@ export default {
   computed: {
   },
   created () {
-    // 把首页请求的数据绑定到页面上
-    this.homeContent = this.$store.getters.aboumenulist.homeList
-    this.projectContent = this.$store.getters.aboumenulist.projectList
-    // console.log(this.homeContent)
-    // console.log(this.projectContent)
+    // 请求数据，加载页面
+    doAction(getMenu, this)
   },
   mounted () {
-    this.$nextTick(() => {
-      console.log(this.homeContent)
-    })
+    const that = this
+    // 延时获取一下就得到数据了
+    setTimeout(() => {
+      // console.log(store.getters.aboumenulist)
+      that.homeContent = store.getters.aboumenulist.homeList
+      that.projectContent = store.getters.aboumenulist.projectList
+    }, 500)
   },
   methods: {
     enter (el, done) {
@@ -141,8 +151,9 @@ export default {
   top: 20px;
 }
 .aboutTitle{
-  height: 100%;
+  height: calc(100% - 166px);
   margin-left: 20px;
+  /* border: 1px solid yellow; */
 }
 .aboutMain{
   width: 60%;

@@ -34,6 +34,15 @@ async function getHomeMenu (params) {
   that.menu = store.getters.homeMenuList.homeMenu
 }
 
+async function getProjectMenu (params) {
+  console.log(params)
+  const that = params
+  const homeType = params.menuType
+  await store.dispatch('GetProjectList', homeType)
+  console.log(store.getters.projectMenuList.projectMenu)
+  that.menu = store.getters.projectMenuList.projectMenu
+}
+
 export default {
   data () {
     return {
@@ -78,6 +87,8 @@ export default {
     if (this.menuType === 1) {
       // this.menu = this.$store.getters.aboumenulist.homeList
       doAction(getHomeMenu, this)
+    } else if (this.menuType === 2) {
+      doAction(getProjectMenu, this)
     }
   },
   mounted () {

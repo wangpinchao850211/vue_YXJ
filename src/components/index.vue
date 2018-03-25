@@ -128,6 +128,7 @@ export default {
 .default .navList{
   position: relative;
   /* border: 2px solid red; */
+  height: 400px;
 }
 .default .navList h1{
   /* 在main.js引入字体库后，直接在css里即可使用了 */
@@ -145,7 +146,7 @@ export default {
 .navMenu{
   position: absolute;
   right: 66%;
-  top: -16px;
+  top: 2px;
 }
 .navMenu h1:hover{
   color: rgb(255,255,255);

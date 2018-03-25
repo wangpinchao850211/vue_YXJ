@@ -5,6 +5,7 @@
     @leave="leave"
     @after-leave="afterLeave">
   <div class="home">
+    <go-page class="getDefault" :page="pageContent" @goPage="pageClick"></go-page>
     <home-menu :menu-type="menuType"></home-menu>
   </div>
   </transition>
@@ -12,11 +13,12 @@
 
 <script>
 import HomeMenu from 'base/moduleMenu'
-
+import goPage from 'base/back'
 export default {
   data () {
     return {
-      menuType: 0
+      menuType: 0,
+      pageContent: 'B'
     }
   },
   created () {
@@ -38,10 +40,14 @@ export default {
     },
     afterLeave () {
       console.log('afterleave')
+    },
+    pageClick () {
+      this.$router.go(-1)
     }
   },
   components: {
-    HomeMenu
+    HomeMenu,
+    goPage
   }
 }
 </script>
@@ -60,6 +66,12 @@ export default {
   right : 0;
   bottom : 0;
   overflow: hidden;
+}
+.getDefault{
+  background-color: rgba(200,200,200, 0.9);
+  position: fixed;
+  left: 20px;
+  top: 20px;
 }
 .slide-enter-active, .slide-leave-active{
   transition : all 0.8s cubic-bezier(0.82,0,0.05,1)

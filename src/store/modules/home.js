@@ -15,6 +15,7 @@ export default {
     // 获取角色列表
     async GetHomeList ({ commit }, params) {
       const res = await HomeList(params)
+      console.log(res)
       if (res.data.status === 1) {
         console.log(res.data.result.homeList)
         commit('SET_HOME_MENU', res.data.result.homeList)
