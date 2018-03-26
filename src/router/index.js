@@ -24,7 +24,8 @@ export default new Router({
       name: 'home',
       component: load('home/index'),
       // 为什么不能跳转到子路由，这是个问题！(看了几个项目，要显示children，必须还要有router-view，否则无法显示)
-      children: []
+      children: [
+      ]
     },
     {
       path: '/project',
@@ -45,6 +46,17 @@ export default new Router({
       path: '/links',
       name: 'links',
       component: load('links')
+    },
+    // 下面开始是模块路由
+    {
+      path: '/home/html5',
+      name: 'html5',
+      component: load('home/html5')
+    },
+    {
+      path: '/home/css3',
+      name: 'css3',
+      component: load('home/css3')
     }
   ]
 })

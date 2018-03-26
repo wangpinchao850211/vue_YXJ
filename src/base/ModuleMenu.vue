@@ -1,7 +1,7 @@
 <template>
   <div id="menu" :style="styleNote">
     <ul id="flow">
-      <li v-if="menu.length>0" class="theLi" v-for="(item, index) in menu" :key="index">
+      <li v-if="menu.length>0" class="theLi" v-for="(item, index) in menu" :key="index" @click="goModule(item.title)">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
           <line class="top" x1="0" y1="0" x2="200" y2="0" />
           <line class="left" x1="0" y1="100%" x2="0" y2="-100%" />
@@ -74,6 +74,9 @@ export default {
     }
   },
   computed: {
+    key () {
+      return this.$route.name !== undefined ? this.$route.name + +new Date() : this.$route + +new Date()
+    },
     ...mapGetters([
       'aboumenulist'
     ])
@@ -163,6 +166,10 @@ export default {
         // 实时更新这一列的高度
         this.colHeightArr[minIndex] += liEvery.clientHeight + this.liSpace
       }
+    },
+    goModule (title) {
+      console.log(title)
+      this.$router.push({path: `/home/${title}`, query: {name: title}})
     },
     ...mapActions({})
   }

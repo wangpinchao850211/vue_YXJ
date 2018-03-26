@@ -8,6 +8,8 @@ import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 import homeMenu from './modules/home'
 import projectMenu from './modules/project'
+import html5 from './modules/html5'
+import css3 from './modules/css3'
 
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
@@ -15,7 +17,9 @@ const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   modules: {
     homeMenu,
-    projectMenu
+    projectMenu,
+    html5,
+    css3
   },
   state,
   mutations,
