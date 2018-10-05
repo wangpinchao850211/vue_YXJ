@@ -27,4 +27,18 @@ export default {
   line-height: 46px;
   cursor: pointer;
 }
+/* .largeBack{
+  width: 100px;
+  height: 46px;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+  color: darkslategrey;
+  font-size: 18px;
+  text-align: center;
+  line-height: 46px;
+  position: relative;
+  left: 16px;
+  top: 24px;
+  cursor: pointer;
+} */
 </style>

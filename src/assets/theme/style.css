@@ -40,9 +40,9 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
   cursor: pointer;
 }
 /* 描边css动画 */
-#flow svg{ 
-  display: block; 
-  position: absolute; 
+#flow svg{
+  display: block;
+  position: absolute;
   left: 0; top: 0;
 }
 #flow svg line {
@@ -56,7 +56,7 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
 .theLi svg line.top, .theLi svg line.bottom {
   -ms-stroke-dasharray: 330 240;
   stroke-dasharray: 330 240;
-}			
+}
 .theLi svg line.left, .theLi svg line.right {
   -ms-stroke-dasharray: 430 340;
   stroke-dasharray: 430 340;
@@ -90,12 +90,12 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
 .theLi:hover .mask{
     background-color: rgba(24, 24, 24, 0.8);
     -webkit-transition: background 0.4s 0.5s;
-	transition: background 0.4s 0.5s;
+	  transition: background 0.4s 0.5s;
     -webkit-transition-delay: 0s;
     transition-delay: 0s;
-    /*-1 可以当背景 让其高斯模糊*/ 
-    /* z-index: -1; 
-    -webkit-filter: blur(1px);  
+    /*-1 可以当背景 让其高斯模糊*/
+    /* z-index: -1;
+    -webkit-filter: blur(1px);
     filter: blur(1px); */
 }
 .theLi h2,
@@ -117,3 +117,7 @@ input[type=text]:focus,input[type=password]:focus, textarea:focus {
 .theLi:hover svg line.bottom{ transform: translateX(200px);}
 .theLi:hover svg line.left{ transform: translateY(100%);}
 .theLi:hover svg line.right{ transform: translateY(-100%);}
+/* login验证器提示样式 */
+.el-form-item__error{
+  color: aqua;
+}

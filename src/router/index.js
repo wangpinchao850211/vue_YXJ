@@ -7,6 +7,10 @@ function load (file) {
   return () => import(`components/${file}`)
 }
 
+function loadmain (file) {
+  return () => import(`base/${file}`)
+}
+
 export default new Router({
   routes: [
     {
@@ -57,6 +61,12 @@ export default new Router({
       path: '/home/css3',
       name: 'css3',
       component: load('home/css3')
+    },
+    // web主要内容页
+    {
+      path: '/webContent',
+      name: 'webContent',
+      component: loadmain('webContent')
     }
   ]
 })

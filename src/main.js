@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './mock'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import 'font-awesome/css/font-awesome.min.css'
 import './assets/theme/style.css'
 import animate from 'animate.css'
@@ -27,6 +29,7 @@ Vue.config.productionTip = false
 
 Vue.use(router)
 Vue.use(store)
+Vue.use(ElementUI)
 Vue.use(animate)
 
 /* eslint-disable no-new */
