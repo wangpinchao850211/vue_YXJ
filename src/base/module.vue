@@ -42,8 +42,8 @@ export default {
       pageContent: '首页',
       showLogin: true,
       ruleData: {
-        username: '',
-        password: '',
+        username: 'wangqihuan',
+        password: 'ppp909090',
         checked: false
       },
       rules: {
