@@ -1,3 +1,4 @@
+
 <template>
   <div class="wrapper">
     <div id="wpcUeditor">
@@ -68,4 +69,8 @@ export default {
   height: 100%;
   margin: 0 auto;
 }
+</style>
+
+<style lang="scss">
+
 </style>
