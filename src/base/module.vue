@@ -137,8 +137,8 @@ export default {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.login-com{
-}
+/* .login-com{
+} */
 .wpcLoginForm{
   width: 340px;
   height: auto;
@@ -159,10 +159,10 @@ export default {
   line-height: 50px;
 }
 .gohome {
-  display: inline-block;
-  float: right;
+  display: block;
   margin-right: 5px;
   cursor: pointer;
+  float: right;
 }
 .login-btn{
   background-color: darkslategrey;
