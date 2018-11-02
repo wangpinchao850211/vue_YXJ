@@ -1,3 +1,9 @@
+/* 这个是scss文件，就可以应用sass的特性方法 */
+$--color-success: rgb(93, 95, 94);;
+// 首页背景色
+.default{
+  background-color: $--color-success;
+}
 *{
     margin:0;
     padding:0;

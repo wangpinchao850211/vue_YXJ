@@ -1,6 +1,8 @@
 
 <template>
   <div class="wrapper">
+    <el-button type="primary" @click="showWpcSassDiv" style="width: 140px;">显示隐藏sass</el-button>
+    <div style="width:100%;height:100px;background-color:red;" class="wpcSass">我是scss控制</div>
     <div id="wpcUeditor">
       <!-- 这个是数据双向绑定 -->
       <el-input v-model="msg"></el-input>
@@ -15,6 +17,7 @@ export default {
   name: 'webContent',
   data () {
     return {
+      showWpcSass: true,
       msg: '<h2><img src="http://img.baidu.com/hi/jx2/j_0003.gif"/>Vue + UEditor + v-model双向绑定</h2>',
       myConfig: {
         // 如果需要上传功能,找后端小伙伴要服务器接口地址
@@ -53,6 +56,13 @@ export default {
     },
     ready (editorInstance) {
       console.log(`编辑器实例${editorInstance.key}: `, editorInstance)
+    },
+    showWpcSassDiv () {
+      // 也得写判断，在scss里扔要写判断，不如直接js控制了
+      let div = document.getElementsByClassName('wpcSass')[0]
+      console.log(div) // 实现隐藏了
+      div.className = 'hiddenWpcSass'
+      this.showWpcSass = false
     }
   }
 }
@@ -61,7 +71,7 @@ export default {
 <style scoped>
 .wrapper{
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: burlywood;
 }
 #wpcUeditor{
@@ -72,5 +82,23 @@ export default {
 </style>
 
 <style lang="scss">
+// 使用scss实现隐藏，小用一下
+@mixin blockOrHidden($boolean:true) {
+  @if $boolean {
+    @debug "$boolean is #{$boolean}";//debug输出信息
+      display: block;
+    }
+    @else {
+      @debug "$boolean is #{$boolean}";
+      display: none;
+    }
+}
 
+.wpcSass {
+  @include blockOrHidden;
+}
+
+.hiddenWpcSass{
+  @include blockOrHidden(false);
+}
 </style>

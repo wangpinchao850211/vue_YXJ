@@ -94,7 +94,7 @@ export default {
   width: calc(100vw - 40px);
   height: calc(100vh - 40px);
   border: 20px solid  rgb(82, 84, 83);
-  background-color: rgb(93, 95, 94);
+  /* background-color: rgb(93, 95, 94); */
   position: fixed;
   z-index: 100;
   top: 0;

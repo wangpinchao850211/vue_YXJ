@@ -8,7 +8,8 @@ import './mock'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'font-awesome/css/font-awesome.min.css'
-import './assets/theme/style.css'
+import './assets/theme/wpcSass.scss'
+import './assets/theme/style.scss'
 import animate from 'animate.css'
 
 Vue.config.productionTip = false
