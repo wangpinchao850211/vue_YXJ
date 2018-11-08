@@ -159,7 +159,7 @@ export default {
   line-height: 50px;
 }
 .gohome {
-  display: block;
+  width: auto;
   margin-right: 5px;
   cursor: pointer;
   float: right;
