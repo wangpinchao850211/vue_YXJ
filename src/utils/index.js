@@ -3,7 +3,7 @@
 * min:左侧范围
 * max:右侧范围
 * */
-export const getRandomNumber = function (min, max) {
+export function getRandomNumber (min, max) {
   if (min > max) {
     var temp = min
     min = max
@@ -15,7 +15,7 @@ export const getRandomNumber = function (min, max) {
 /*
 * 获取随机颜色:
 * */
-export const getRandomColor = function () {
+export function getRandomColor () {
   var redValue = getRandomNumber(0, 255)
   var greenValue = getRandomNumber(0, 255)
   var blueValue = getRandomNumber(0, 255)
@@ -27,7 +27,7 @@ export const getRandomColor = function () {
 * flag:最大值传入true ,最小值传入false
 * array:需要查询的数组
 * */
-export const getIndexByFlag = function (flag, array) {
+export function getIndexByFlag (flag, array) {
   let Index = 0
   let value = array[0]
   if (flag) {
@@ -49,7 +49,7 @@ export const getIndexByFlag = function (flag, array) {
 }
 // 做异步请求函数
 const actions = new WeakMap()
-export const doAction = function (func, params) {
+export function doAction (func, params) {
   if (!actions.has(func)) {
     actions.set(func, true)
   }
