@@ -1,6 +1,6 @@
 
 <template>
-  <el-scrollbar class="top-scroll">
+  <el-scrollbar class="top-scroll" :native="true">
     <div class="wrapper">
       <div class="menu" width="200px">
         <Direct></Direct>
