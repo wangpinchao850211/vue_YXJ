@@ -99,8 +99,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .top-scroll{
-  width:100%;
-  height:100%;
+  width:auto;
+  height:auto;
 }
 .wrapper{
   width: 100vw;
@@ -109,14 +109,14 @@ export default {
   font-family: "Microsoft YaHei", arial, Helvetica, sans-serif, "宋体" !important;
   color: black;
   .menu{
-    width: 199px;
+    width: 299px;
     height: 100%;
     float: left;
     border-right: 1px solid rgb(47, 47, 112)
   }
   main{
     float: right;
-    width: calc(100vw - 200px);
+    width: calc(100vw - 300px);
     height: 100%;
     .header{
       border-bottom: 2px solid rgb(17, 17, 66);

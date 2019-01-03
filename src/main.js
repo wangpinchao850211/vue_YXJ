@@ -17,6 +17,8 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+// vue取色器插件
+import vcolorpicker from 'vcolorpicker'
 
 Vue.config.productionTip = false
 
@@ -38,7 +40,8 @@ Vue.use(router)
 Vue.use(store)
 Vue.use(ElementUI)
 Vue.use(animate)
-Vue.use(VueQuillEditor);
+Vue.use(VueQuillEditor)
+Vue.use(vcolorpicker)
 
 /* eslint-disable no-new */
 new Vue({

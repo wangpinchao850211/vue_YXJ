@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-      <router-view></router-view>
+      <router-view class="routerView"></router-view>
     </div>
 </template>
 
@@ -28,4 +28,17 @@ export default {
   width: 100%;
   height: 100vh;
 }
+.routerView{
+  position: absolute;
+}
+/* .icon { 字体图标class
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+.iconfont {
+  font-size: 20px;
+  padding: 8px;
+} */
 </style>
