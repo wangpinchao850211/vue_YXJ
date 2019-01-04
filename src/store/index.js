@@ -10,6 +10,7 @@ import homeMenu from './modules/home'
 import projectMenu from './modules/project'
 import html5 from './modules/html5'
 import css3 from './modules/css3'
+import mainContent from './modules/mainContent'
 
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
@@ -19,7 +20,8 @@ export default new Vuex.Store({
     homeMenu,
     projectMenu,
     html5,
-    css3
+    css3,
+    mainContent
   },
   state,
   mutations,

@@ -53,7 +53,18 @@ export default {
   //  mounted() {},
 
   methods: {
-    toggleSideBar () {},
+    toggleSideBar () {
+      const flag = this.$store.getters.opened
+      if (flag) {
+        this.$store.commit('SET_MENU_OPEN', false)
+        this.$store.commit('SET_MENU_WIDTH', 0)
+        document.getElementsByClassName('menu')[0].style.transition = 'all 1s'
+      } else {
+        this.$store.commit('SET_MENU_OPEN', true)
+        this.$store.commit('SET_MENU_WIDTH', 5)
+        document.getElementsByClassName('menu')[0].style.transition = 'all 1s'
+      }
+    },
     headleChangeColor () {
       this.el.style.backgroundColor = `${this.color}`
       this.el.style.transitionDuration = '0.8s'
@@ -64,10 +75,14 @@ export default {
     searchTextContent () { // 进行内容的搜索
       console.log(this.searchVal)
     },
-    Read () {},
-    Edit () {},
+    Read () {
+      this.$emit('readedit', 0)
+    },
+    Edit () {
+      this.$emit('readedit', 1)
+    },
     logout () {
-      this.$router.push('')
+      this.$emit('logout')
     }
   }
 }

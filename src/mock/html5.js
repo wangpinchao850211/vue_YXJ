@@ -2,7 +2,7 @@ const ListRes = {
   status: 1,
   result: {
     html5: [
-      {title: 'h5内容'},
+      {title: 'html5'},
       {title: '内容'}]
   }
 }

@@ -68,7 +68,7 @@ export default {
     ...mapState(['remeberValueLogin'])
   },
   created () {
-    console.log(this.content)
+    console.log(this.content) // 从每个知识模块传来的内容
   },
   mounted () {
     this.$store.commit('GET_REMEBERLOGIN_VALUE')
@@ -99,7 +99,8 @@ export default {
             console.log(res)
             const { status, data } = res.data.result
             if (status === 1) {
-              this.$router.push('/webContent')
+              console.log(this.content[0].title)
+              this.$router.push({path: '/webContent', query: {name: this.content[0].title}}) // 将那个知识模块的title路由传入
               console.log(data)
               if (this.ruleData.checked) { // 记住我
                 let rememberValue = `{

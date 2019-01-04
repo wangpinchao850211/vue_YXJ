@@ -30,57 +30,14 @@
 </template>
 
 <script>
+import DataResouce from 'static/resouceData/TreeData' // 引入json文件
 export default {
   data () {
     return {
       filterText: '',
       loadTreeFlag: true, // 是否默认展开所有节点
       defaultExpandedKeys: [], // 默认展开的节点的 key 的数组
-      data: [{
-        id: 1,
-        level: '第一章',
-        levelName: '第一章名字',
-        children: [{
-          id: 4,
-          level: '第一节',
-          levelName: '第一节名字',
-          children: [{
-            id: 9,
-            level: '第一小节',
-            levelName: '第一小节名字'
-          }, {
-            id: 10,
-            level: '第二小节',
-            levelName: '第二小节名字'
-          }]
-        }]
-      }, {
-        id: 2,
-        level: '第二章',
-        levelName: '第二章名字',
-        children: [{
-          id: 5,
-          level: '第一节',
-          levelName: '第一节名字'
-        }, {
-          id: 6,
-          level: '第二节',
-          levelName: '第二节名字'
-        }]
-      }, {
-        id: 3,
-        level: '第三章',
-        levelName: '第三章名字',
-        children: [{
-          id: 7,
-          level: '第一节',
-          levelName: '第一节名字'
-        }, {
-          id: 8,
-          level: '第二节',
-          levelName: '第二节名字'
-        }]
-      }],
+      data: [],
       defaultProps: {
         children: 'children',
         label: 'levelName'
@@ -101,7 +58,9 @@ export default {
 
   created () {},
 
-  //  mounted() {},
+  mounted () {
+    this.data = [...DataResouce.data]
+  },
 
   methods: {
     searchNode () {

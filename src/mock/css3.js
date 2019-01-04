@@ -2,7 +2,7 @@ const ListRes = {
   status: 1,
   result: {
     css3: [
-      {title: 'css3内容'},
+      {title: 'css3'},
       {title: '内容'}]
   }
 }
